@@ -60,6 +60,24 @@ set foldnestmax=10 " 10 nested fold max
 set foldmethod=indent " fold method based on indent level
 "}}}
 
+"File and window exploration {{{
+"Netrw options
+let g:netrw_liststyle = 3 " tree style explorer
+let g:netrw_browse_split = 3 " open file in new tab
+let g:netrw_winsize = 25 " winsize of 20%
+nnoremap <F2> :Sex! <CR> " netrw shortcut
+
+"Split and tab mappings
+nnoremap <Tab> <C-W>w " TAB moves to next split
+nnoremap <S-Tab> <C-W>p " S-TAB moves to prev split
+nnoremap <C-F> <C-W><Bar> " Max the width of current split
+nnoremap <C-E> <C-W>= " Normalize split width
+nnoremap <Bar> <C-W>v<C-W><Right> " BAR splits vertically
+nnoremap <C-Right> <C-W>r " Swap splits
+nnoremap <C-Up> <C-W>T " Split to tab
+nnoremap <C-Down> :call MoveToPrevTab()<CR>" Tab to split
+"}}}
+
 "Misc {{{
 set clipboard=unnamed " copy/paste using clipboard as default
 set backspace=2 " backspace normal behaviour
@@ -76,4 +94,27 @@ nnoremap <F5> :%s/\s\+$//e <CR>
 let leader=","
 "}}}
 
+"My functions {{{
+function MoveToPrevTab()
+  "there is only one window
+  if tabpagenr('$') == 1 && winnr('$') == 1
+    return
+  endif
+  "preparing new window
+  let l:tab_nr = tabpagenr('$')
+  let l:cur_buf = bufnr('%')
+  if tabpagenr() != 1
+    close!
+    if l:tab_nr == tabpagenr('$')
+      tabprev
+    endif
+    vs
+  else
+    close!
+    exe "0tabnew"
+  endif
+  "opening current buffer in new window
+  exe "b".l:cur_buf
+endfunc
+"}}}
 " vim:foldmethod=marker:foldlevel=0

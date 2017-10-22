@@ -6,7 +6,6 @@ My vimrc config file.
 + Sex!
 + Tabs
 + Splits (buffers)
-+ Folds
 + Console
 + Ag
 + Autocompletes
