@@ -3,7 +3,6 @@ My vimrc config file.
 
 # TODO
 
-+ Copy paste clipboard
 + Sex!
 + Tabs
 + Splits (buffers)

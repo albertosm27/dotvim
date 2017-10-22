@@ -41,6 +41,7 @@ set showmatch " highlight matching [{()}]
 "Tabs, spaces {{{
 set softtabstop=4 " number of spaces in tab when editing
 set expandtab " tabs are spaces
+set shiftwidth=4 " indent operations with 4 spaces
 "}}}
 
 "Syntax {{{
@@ -60,9 +61,10 @@ set foldmethod=indent " fold method based on indent level
 "}}}
 
 "Misc {{{
-set backspace=2
+set clipboard=unnamed " copy/paste using clipboard as default
+set backspace=2 " backspace normal behaviour
 set showcmd " show command in bottom bar
-set lazyredraw  " redraw when needed
+set lazyredraw " redraw when needed
 "Higlight trailing whitespaces
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
