@@ -4,8 +4,15 @@
 call plug#begin('~/vimfiles/plugged')
 
 Plug 'morhetz/gruvbox'
+Plug 'mileszs/ack.vim'
 
 call plug#end()
+"Ack config to work with ag
+let g:ackprg = 'ag --vimgrep --smart-case'
+cnoreabbrev ag Ack
+cnoreabbrev aG Ack
+cnoreabbrev Ag Ack
+cnoreabbrev AG Ack
 "}}}
 
 "ConEmu fixes {{{
@@ -65,6 +72,7 @@ set foldmethod=indent " fold method based on indent level
 let g:netrw_liststyle = 3 " tree style explorer
 let g:netrw_browse_split = 3 " open file in new tab
 let g:netrw_winsize = 25 " winsize of 20%
+let g:netrw_banner = 0 " hide banner
 nnoremap <F2> :Sex! <CR> " netrw shortcut
 
 "Split and tab mappings
@@ -88,6 +96,8 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 "Remove trailing whitespaces based on filetype
 nnoremap <F5> :%s/\s\+$//e <CR>
+"Automatically use unix file format (CR)
+autocmd FileType * if &modifiable|setlocal fileformat=unix|endif
 "}}}
 
 "Leader shortcuts {{{
