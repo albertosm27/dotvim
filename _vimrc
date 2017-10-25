@@ -55,6 +55,12 @@ set shiftwidth=4 " indent operations with 4 spaces
 syntax enable " enable syntax processing
 "}}}
 
+" Autocomplete {{{
+set complete=.,b,u,],i,d " basic complete with buffers used, includes and tags
+set wildmode=longest,list:longest " autocomplete till longest match
+set completeopt=menu,preview " preview matches
+" }}}
+
 "Search {{{
 set incsearch " search as characters are entered
 set hlsearch " highlight matches
@@ -90,7 +96,6 @@ nnoremap <C-Down> :call MoveToPrevTab()<CR>" Tab to split
 set clipboard=unnamed " copy/paste using clipboard as default
 set backspace=2 " backspace normal behaviour
 set showcmd " show command in bottom bar
-set lazyredraw " redraw when needed
 "Higlight trailing whitespaces
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
