@@ -17,3 +17,6 @@ git clone git clone git@github.com:vim/vim.git
 '''
 @set SRC=C:\build\vim @set DST=C:\build\vim73 xcopy %SRC%\runtime %DST% /D /E /H /I /Y %* xcopy %SRC%\src\xxd\xxd.exe %DST%\* /D /Y %* xcopy %SRC%\src\GvimExt\gvimext.dll %DST%\* /D /Y %* xcopy %SRC%\src\*.exe %DST%\* /D /Y %*
 '''
+
+# Cmder utf8
+Environment --> chcp utf8

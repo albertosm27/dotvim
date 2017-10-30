@@ -6,8 +6,11 @@ call plug#begin('~/vimfiles/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'mileszs/ack.vim'
 Plug 'Valloric/YouCompleteMe'
+Plug 'vim-syntastic/syntastic'
+Plug 'vim-airline/vim-airline'
 
 call plug#end()
+
 "Ack config to work with ag
 let g:ackprg = 'ag --vimgrep --smart-case'
 cnoreabbrev ag Ack
@@ -45,6 +48,8 @@ set number " show line numbers
 set relativenumber " show relative line numbers
 set cursorline " highlight current line
 set showmatch " highlight matching [{()}]
+set laststatus=2
+let g:airline_powerline_fonts = 1
 "}}}
 
 "Tabs, spaces {{{
@@ -55,9 +60,22 @@ set shiftwidth=4 " indent operations with 4 spaces
 
 "Syntax {{{
 syntax enable " enable syntax processing
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:ycm_show_diagnostics_ui = 0
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 "}}}
 
 " Autocomplete {{{
+" YouCompleteMe General Config
+let g:ycm_global_ycm_extra_conf = 'C:\Users\Shurberto\vimfiles\ycm_extra_conf.py'
+
 set complete=.,b,u,],i,d " basic complete with buffers used, includes and tags
 set wildmode=longest,list:longest " autocomplete till longest match
 set completeopt=menu,preview " preview matches
