@@ -8,6 +8,7 @@ Plug 'mileszs/ack.vim'
 Plug 'Valloric/YouCompleteMe'
 Plug 'vim-syntastic/syntastic'
 Plug 'vim-airline/vim-airline'
+Plug 'shime/vim-livedown'
 
 call plug#end()
 
@@ -17,6 +18,8 @@ cnoreabbrev ag Ack
 cnoreabbrev aG Ack
 cnoreabbrev Ag Ack
 cnoreabbrev AG Ack
+
+nnoremap <C-m> :LivedownToggle<CR>
 "}}}
 
 "ConEmu fixes {{{
